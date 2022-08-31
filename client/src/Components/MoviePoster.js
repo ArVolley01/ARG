@@ -14,12 +14,13 @@ const MoviePoster = ({movie} ) => {
   }, [])
     return (
         <div>
-            <h2>{movieDetails.Title}</h2>
+            <h2>{movieDetails.Title} ({movieDetails.Rated})</h2>
         <img src={movieDetails.Poster} alt={movieDetails.Title} />
             <h4>Released: {movieDetails.Released}</h4>
             <h4>Genre: {movieDetails.Genre}</h4>
             <h4>Director: {movieDetails.Director}</h4>
             <h5>{movieDetails.Plot}</h5>
+            <h4>Metascore: {movieDetails.Metascore}</h4>
             </div>
     )
 }
