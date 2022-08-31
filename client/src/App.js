@@ -5,6 +5,7 @@ import PlaceHolder from './Components/Placeholder'
 import NavBar from './Components/NavBar';
 import MoviePage from './Components/MoviePage';
 import SelectedMovie from './Components/SelectedMovie';
+import TheaterPage from './Components/TheaterPage'
 
 function App() {
 
@@ -64,7 +65,7 @@ function App() {
           <Route path="/" element={<PlaceHolder from="Home" />} />
           <Route path="/movie" element={<MoviePage setCurrentMovie={setCurrentMovie} movies={movies} name="the batman" />} />
           <Route path={`/movie/${currentMovie.id}`} element={<SelectedMovie currentMovie={currentMovie}/>} />
-          <Route path="/theater" element={<TheaterPage theaters={theaters}/>}/>
+          <Route path="/theater" element={<TheaterPage setCurrentMovie={setCurrentMovie} setCurrentTheater={setCurrentTheater} theaters={theaters}/>}/>
         </Routes>
       </BrowserRouter>
     </div>
