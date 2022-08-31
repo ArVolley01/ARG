@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react"
+import MoviePoster from './MoviePoster'
 
 const MoviePage = () => {
 
@@ -20,8 +21,7 @@ const MoviePage = () => {
             {movies.map((movie, index) => {
                 return (
                     <div key = { index }>
-                        {//<img src={posters[index]} alt="movie poster" />
-                        }
+                      <MoviePoster movie={movie.name} />
                     </div>
                 )
             })}

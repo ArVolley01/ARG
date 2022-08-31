@@ -1,10 +1,25 @@
+import {useState, useEffect} from 'react'
 
 
-const MoviePoster = () => {
+const MoviePoster = ({movie} ) => {
+  const [movieDetails, setMovieDetails] = useState([])
+
+  useEffect(() => {
+    const getMovieDetails = async () => {
+      let req = await fetch(`http://www.omdbapi.com/?t=${movie}&apikey=7ebab2fe`)
+      let res = await req.json()
+      setMovieDetails(res)
+    }
+    getMovieDetails()
+  }, [])
     return (
         <div>
-            <p>{"http://www.omdbapi.com/?t=${name}&apikey=7ebab2fe"}</p>
-        </div>
+            <h2>{movieDetails.Title} ({movieDetails.Rated})</h2>
+        <img src={movieDetails.Poster} alt={movieDetails.Title} />
+        <h4>Genre: {movieDetails.Genre} | Runtime: {movieDetails.Runtime}</h4>
+            {/* <h5>{movieDetails.Plot}</h5> */}
+            {/* <h4>Metascore: {movieDetails.Metascore}</h4> */}
+            </div>
     )
 }
 
