@@ -4,6 +4,7 @@ import {BrowserRouter, Routes, Route } from 'react-router-dom'
 import PlaceHolder from './Components/Placeholder'
 import NavBar from './Components/NavBar';
 import MoviePage from './Components/MoviePage';
+import SelectedMovie from './Components/SelectedMovie';
 
 function App() {
 
@@ -50,7 +51,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<PlaceHolder from="Home" />} />
-          <Route path="/movie" element={<MoviePage selectCurrentMovie={selectCurrentMovie} movies={movies} name="the batman" />} />
+          <Route path="/movie" element={<MoviePage setCurrentMovie={setCurrentMovie} movies={movies} name="the batman" />} />
           <Route path={`/movie/${currentMovie.id}`} element={<SelectedMovie currentMovie={currentMovie}/>} />
         </Routes>
       </BrowserRouter>
