@@ -1,23 +1,41 @@
 
 import { useState, useEffect } from "react"
 
-const MoviePage = (props) => {
+const MoviePage = () => {
 
-    const [poster, setPoster] = useState("")
+    const [posters, setPosters] = useState([])
+    const [movies, setMovies] = useState([])
 
     useEffect(() => {
-        const getMovieDetails = async () => {
-            let req = await fetch(`http://www.omdbapi.com/?t=${props.name.toLowerCase()}&apikey=7ebab2fe`)
+        let newPosters = []
+        const getMovieDetails = async (name) => {
+            let req = await fetch(`http://www.omdbapi.com/?t=${name}&apikey=7ebab2fe`)
             let res = await req.json()
-            setPoster(res.Poster)
+            newPosters.push(res.Poster)
         }
-        getMovieDetails()
-    }, [props.name])
+        const getBackend = async () => {
+            let req = await fetch(`http://localhost:3000/movies`)
+            let res = await req.json()
+            setMovies(res)
+            res.forEach((element) => {
+                getMovieDetails(element.name)
+            });
+            setPosters(newPosters)
+        }
+        getBackend()
+    }, [])
 
 
     return (
         <div>
-            <img src={poster} alt="movie poster"/>
+            {console.log(posters[0])}
+            {movies.map((movie, index) => {
+                return (
+                    <div key = { index }>
+                        <img src={posters[index]} alt="movie poster" />
+                    </div>
+                )
+            })}
         </div>
     )
 }
