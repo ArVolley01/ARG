@@ -29,11 +29,6 @@ Movie.create(name: "Top Gun: Maverick")
 Movie.create(name: "Bodies Bodies Bodies")
 Movie.create(name: "Minions: Rise of Gru")
 
-
-
-
-
-
 8.times do Showtime.create(movie_id: Movie.all.sample().id, theater_id: Theater.all.sample().id, time: Faker::Date.forward) end
 
 20.times do Ticket.create(price: Faker::Commerce.price(range: 15..18), showtime_id: Showtime.all.sample().id) end
