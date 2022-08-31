@@ -18,7 +18,7 @@ const MoviePoster = ({movie, setCurrentMovie} ) => {
 
   const handleClick = () => {
     setCurrentMovie(movie)
-    navigate(`/movies/${movie.id}`)
+    navigate(`/movie/${movie.id}`)
   }
     return (
         <div onClick={handleClick}>
