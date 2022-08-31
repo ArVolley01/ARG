@@ -2,26 +2,14 @@
 import { useState, useEffect } from "react"
 import MoviePoster from './MoviePoster'
 
-const MoviePage = () => {
-
-    const [movies, setMovies] = useState([])
-
-    useEffect(() => {
-        const getBackend = async () => {
-            let req = await fetch(`http://localhost:3000/movies`)
-            let res = await req.json()
-            setMovies(res)
-        }
-        getBackend()
-    }, [])
-
+const MoviePage = ({movies, setCurrentMovie}) => {
 
     return (
         <div>
             {movies.map((movie, index) => {
                 return (
                     <div key = { index }>
-                      <MoviePoster movie={movie.name} imdb_id={movie.imdb_id}/>
+                      <MoviePoster setCurrentMovie={setCurrentMovie} movie={movie}/>
                     </div>
                 )
             })}
