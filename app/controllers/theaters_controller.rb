@@ -4,6 +4,4 @@ class TheatersController < ApplicationController
         theaters = Theater.all
         render json: theaters
     end
-
-
 end
