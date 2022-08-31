@@ -34,13 +34,24 @@ function App() {
 
 
   const [movies, setMovies] = useState([])
+  const [theaters, setTheaters] = useState([])
   const [currentMovie, setCurrentMovie] = useState({})
+  const [setTheater, setCurrentTheater] = useState({})
 
   useEffect(() => {
     const getBackend = async () => {
       let req = await fetch(`http://localhost:3000/movies`)
       let res = await req.json()
       setMovies(res)
+    }
+    getBackend()
+  }, [])
+
+  useEffect(() => {
+    const getBackend = async () => {
+      let req = await fetch(`http://localhost:3000/theaters`)
+      let res = await req.json()
+      setTheaters(res)
     }
     getBackend()
   }, [])
@@ -53,6 +64,7 @@ function App() {
           <Route path="/" element={<PlaceHolder from="Home" />} />
           <Route path="/movie" element={<MoviePage setCurrentMovie={setCurrentMovie} movies={movies} name="the batman" />} />
           <Route path={`/movie/${currentMovie.id}`} element={<SelectedMovie currentMovie={currentMovie}/>} />
+          <Route path="/theater" element={<TheaterPage theaters={theaters}/>}/>
         </Routes>
       </BrowserRouter>
     </div>
