@@ -13,6 +13,7 @@ class TicketsController < ApplicationController
             render json: :edit, status: :unprocessable_entity
         end
     end
+
     private
     def ticket_params
       params.permit(:showtime_id, :price, :available)
