@@ -19,15 +19,15 @@ puts "creating new seed data"
 2.times do Theater.create(name: Faker::University.name, street_address: Faker::Address.street_address) end
 
 # 5.times do Movie.create(name: Faker::Movie.title, description: Faker::Quote.jack_handey, runtime: Faker::Number.between(from: 100, to: 200), rating: "PG", genre: Faker::Book.genre, release_date: Faker::Date.backward) end
-Movie.create(name: "The Invitation")
-Movie.create(name: "Dragon Ball Super: Super Hero")
-Movie.create(name: "Beast")
-Movie.create(name: "Breaking")
-Movie.create(name: "Bullet Train")
-Movie.create(name: "DC League of Super-Pets")
-Movie.create(name: "Top Gun: Maverick")
-Movie.create(name: "Bodies Bodies Bodies")
-Movie.create(name: "Minions: Rise of Gru")
+Movie.create(name: "The Invitation", imdb_id: 'tt12873562')
+Movie.create(name: "Dragon Ball Super: Super Hero", imdb_id: 'tt14614892')
+Movie.create(name: "Beast", imdb_id: 'tt13223398')
+Movie.create(name: "Breaking", imdb_id: 'tt12311620')
+Movie.create(name: "Bullet Train", imdb_id: 'tt12593682')
+Movie.create(name: "DC League of Super-Pets", imdb_id: 'tt8912936')
+Movie.create(name: "Top Gun: Maverick", imdb_id: 'tt1745960')
+Movie.create(name: "Bodies Bodies Bodies", imdb_id: 'tt8110652')
+Movie.create(name: "Minions: The Rise of Gru", imdb_id: 'tt5113044')
 
 8.times do Showtime.create(movie_id: Movie.all.sample().id, theater_id: Theater.all.sample().id, time: Faker::Date.forward) end
 
