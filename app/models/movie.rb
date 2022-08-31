@@ -1,4 +1,4 @@
 class Movie < ApplicationRecord
-    has_many :theaters
     has_many :showtimes
+    has_many :theaters, through: :showtimes
 end
