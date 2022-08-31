@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/movies/:id", to: "movies#show"
   get "/tickets", to: "tickets#index"
   patch "/tickets/:id/update", to: "tickets#update"
+  get "/movies/:id/theaters/:theater_id/showtimes", to: "movies#showtimes"
 
   # Defines the root path route ("/")
   # root "articles#index"
