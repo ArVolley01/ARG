@@ -1,8 +1,11 @@
 import {useState, useEffect} from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 const MoviePoster = ({movie, setCurrentMovie} ) => {
   const [movieDetails, setMovieDetails] = useState([])
+
+  let navigate = useNavigate()
 
   useEffect(() => {
     const getMovieDetails = async () => {
@@ -12,8 +15,13 @@ const MoviePoster = ({movie, setCurrentMovie} ) => {
     }
     getMovieDetails()
   }, [])
+
+  const handleClick = () => {
+    setCurrentMovie(movie)
+    navigate(`/movies/${movie.id}`)
+  }
     return (
-        <div onClick={setCurrentMovie(movie)}>
+        <div onClick={handleClick}>
             <h2>{movieDetails.Title} ({movieDetails.Rated})</h2>
         <img src={movieDetails.Poster} alt={movieDetails.Title} />
         <h4>Genre: {movieDetails.Genre} | Runtime: {movieDetails.Runtime}</h4>
