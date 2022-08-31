@@ -1,54 +1,45 @@
 import './App.css';
 import { useState, useEffect } from 'react'
+import {BrowserRouter, Routes, Route } from 'react-router-dom'
+import PlaceHolder from './Components/Placeholder'
+import NavBar from './Components/NavBar';
+import MoviePage from './Components/MoviePage';
 
 function App() {
 
-  const [movies, setMovies] = useState([])
-  const [theaters, setTheaters] = useState([])
+  // const [movies, setMovies] = useState([])
 
-  useEffect(() => {
-    const getMovies = async () => {
-      let req = await fetch('http://localhost:3000/movies')
-      let res = await req.json()
-      console.log(res)
-      setMovies(res)
-    }
-    const getTheaters = async () => {
-      let req = await fetch('http://localhost:3000/theaters')
-      let res = await req.json()
-      console.log(res)
-      setTheaters(res)
-    }
-    getMovies()
-    getTheaters()
-  }, [])
+  // useEffect(() => {
+  //   const getMovies = async () => {
+  //     let req = await fetch('http://localhost:3000/movies')
+  //     let res = await req.json()
+  //     setMovies(res)
+  //   }
+  //   getMovies()
+  // }, [])
+
+  //   < h2 >
+  //   Movie List
+  //     </h2 >
+  // {
+  //   movies.map((movie) => {
+  //     return (
+  //       <div key={movie.id}>
+  //         <h4>{movie.name}</h4>
+  //       </div>
+  //     )
+  //   })
+  // }
 
   return (
     <div className="App">
-      <h2>
-        Movies
-      </h2>
-      {
-        movies.map((movie) => {
-          return (
-            <div key={movie.id}>
-              <h4>{movie.name}</h4>
-            </div>
-          )
-        })
-      }
-      <h2>
-        Theaters
-      </h2>
-      {
-        theaters.map((theater) => {
-          return (
-            <div key={theater.id}>
-              <h4>{theater.name}</h4>
-            </div>
-          )
-        })
-      }
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<PlaceHolder from="Home" />} />
+          <Route path="/movie" element={<MoviePage name="the batman" />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
