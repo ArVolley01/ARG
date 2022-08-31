@@ -19,7 +19,7 @@ puts "creating new seed data"
 2.times do Theater.create(name: Faker::University.name, street_address: Faker::Address.street_address) end
 
 5.times do Movie.create(name: Faker::Movie.title, description: Faker::Quote.jack_handey, runtime: Faker::Number.between(from: 100, to: 200), rating: "PG", genre: Faker::Book.genre, release_date: Faker::Date.backward) end
-
+    
 8.times do Showtime.create(movie_id: Movie.all.sample().id, theater_id: Theater.all.sample().id, time: Faker::Date.forward) end
 
 20.times do Ticket.create(price: Faker::Commerce.price(range: 15..18), showtime_id: Showtime.all.sample().id) end
