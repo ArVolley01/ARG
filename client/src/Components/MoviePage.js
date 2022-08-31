@@ -21,7 +21,7 @@ const MoviePage = () => {
             {movies.map((movie, index) => {
                 return (
                     <div key = { index }>
-                      <MoviePoster movie={movie.name} />
+                      <MoviePoster movie={movie.name} imdb_id={movie.imdb_id}/>
                     </div>
                 )
             })}
