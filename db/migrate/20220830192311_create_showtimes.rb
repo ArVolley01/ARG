@@ -4,7 +4,7 @@ class CreateShowtimes < ActiveRecord::Migration[7.0]
       t.integer :movie_id
       t.integer :theater_id
       t.datetime :time
-
+      
       t.timestamps
     end
   end
