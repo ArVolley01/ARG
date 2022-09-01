@@ -120,8 +120,10 @@ body {
   /* border: solid green; */
   border-radius: 10px;
   display: inline-block;
-  
+}
 
+.movieCard:hover {
+  text-decoration: underline dotted rgb(235, 207, 171);
 }
 
 /* THEATER PAGE */

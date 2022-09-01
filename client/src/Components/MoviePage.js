@@ -8,7 +8,7 @@ const MoviePage = ({movies, setCurrentMovie}) => {
         <div className="movieContainer">
             {movies.map((movie, index) => {
                 return (
-                    <div key = { index }>
+                    <div className="movieCard" key = { index }>
                       <MoviePoster setCurrentMovie={setCurrentMovie} movie={movie}/>
                     </div>
                 )
