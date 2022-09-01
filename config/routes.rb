@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/theaters/:id", to: "theaters#show"
   get "/movies/:id", to: "movies#show"
   get "/tickets", to: "tickets#index"
+  get "/tickets/:id", to: "tickets#show"
   patch "/tickets/:id/update", to: "tickets#update"
   get "/theaters/:id/showtimes", to: "theaters#showtimes"
   get "/movies/:id/showtimes", to: "movies#showtimes"
