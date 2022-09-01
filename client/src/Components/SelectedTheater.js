@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 
 
-const SelectedTheater = () => {
-    
+const SelectedTheater = ({}) => {
+
 }
 
 export default SelectedTheater

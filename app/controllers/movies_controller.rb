@@ -31,10 +31,7 @@ class MoviesController < ApplicationController
     def showtimes_by_theater
         movie = Movie.find_by!(id: params[:id])
         theater = Theater.find_by!(id: params[:theater_id])
-        showtimes = movie.showtimes.find_by!(theater_id: params[:theater_id])
-        render json: {
-            theater: theater,
-            showtimes: showtimes
-        }
+        showtimes = movie.showtimes.where(theater_id: params[:theater_id])
+        render json: showtimes.as_json(methods: [:tickets])
     end
 end

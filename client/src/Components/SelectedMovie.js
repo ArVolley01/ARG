@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
+import ShowtimesByMovie from './ShowtimesByMovie.js';
 
 const SelectedMovie = ({ currentMovie, theaters }) => {
 
   const [movieDetails, setMovieDetails] = useState([])
-  const [showtimes, setShowtimes] = useState([])
 
   useEffect(() => {
     const getMovieDetails = async () => {
@@ -12,14 +12,7 @@ const SelectedMovie = ({ currentMovie, theaters }) => {
       // console.log(res)
       setMovieDetails(res)
     }
-    const getShowtimes = async () => {
-      let req = await fetch(`http://localhost:3000/movies/${currentMovie.id}/showtimes`)
-      let res = await req.json()
-      console.log(res)
-      setShowtimes(res)
-    }
     getMovieDetails()
-    getShowtimes()
   }, [])
 
     
@@ -33,7 +26,13 @@ const SelectedMovie = ({ currentMovie, theaters }) => {
       <h4>{movieDetails.Plot}</h4>
       <h5>Metascore: {movieDetails.Metascore}</h5>
       <h2>Showtimes</h2>
-      
+      {theaters.map((theater, index) => {
+                return (
+                    <div key = { index }>
+                      <ShowtimesByMovie theater={theater} currentMovie={currentMovie}/>
+                    </div>
+                )
+            })}
     </div>
   )
 
