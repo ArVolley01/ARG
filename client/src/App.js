@@ -5,7 +5,8 @@ import PlaceHolder from './Components/Placeholder'
 import NavBar from './Components/NavBar';
 import MoviePage from './Components/MoviePage';
 import SelectedMovie from './Components/SelectedMovie';
-import TheaterPage from './Components/TheaterPage'
+import TheaterPage from './Components/TheaterPage';
+import SelectedTheater from './Components/SelectedTheater';
 
 function App() {
 
@@ -37,7 +38,7 @@ function App() {
   const [movies, setMovies] = useState([])
   const [theaters, setTheaters] = useState([])
   const [currentMovie, setCurrentMovie] = useState({})
-  const [setTheater, setCurrentTheater] = useState({})
+  const [currentTheater, setCurrentTheater] = useState({})
 
   useEffect(() => {
     const getBackend = async () => {
@@ -64,8 +65,9 @@ function App() {
         <Routes>
           <Route path="/" element={<PlaceHolder from="Home" />} />
           <Route path="/movie" element={<MoviePage setCurrentMovie={setCurrentMovie} movies={movies} name="the batman" />} />
-          <Route path={`/movie/${currentMovie.id}`} element={<SelectedMovie currentMovie={currentMovie}/>} />
+          <Route path={`/movie/${currentMovie.id}`} element={<SelectedMovie currentMovie={currentMovie} theaters={theaters} />} />
           <Route path="/theater" element={<TheaterPage setCurrentMovie={setCurrentMovie} setCurrentTheater={setCurrentTheater} theaters={theaters}/>}/>
+          <Route path={`/theater/${currentTheater.id}`} element={<SelectedTheater currentMovie={currentMovie}/>} />
         </Routes>
       </BrowserRouter>
     </div>
