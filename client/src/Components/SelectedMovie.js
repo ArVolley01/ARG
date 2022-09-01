@@ -18,17 +18,21 @@ const SelectedMovie = ({ currentMovie, theaters }) => {
     
 
   return (
-    <div>
-      <h1>{movieDetails.Title} ({movieDetails.Rated}) </h1>
-      <img src={movieDetails.Poster} alt={movieDetails.Title} />
-      <h3>Director: {movieDetails.Director}</h3>
-      <h4>Genre: {movieDetails.Genre} | Runtime: {movieDetails.Runtime}</h4>
-      <h4>{movieDetails.Plot}</h4>
-      <h5>Metascore: {movieDetails.Metascore}</h5>
-      <h2>Showtimes</h2>
+    <div className="selectedMovieContainer">
+        <h1 className="selectedMovieTitle" >{movieDetails.Title} ({movieDetails.Rated}) </h1>
+        <img className="selectedMoviePoster" src={movieDetails.Poster} alt={movieDetails.Title} />
+        <div className="movieDetailcontainer">
+      <h4 className="selectedMovieDetail" >Synopsis: <br></br> {movieDetails.Plot}</h4>
+      
+      <h4 className="selectedMovieDetail" >Genre: {movieDetails.Genre} </h4>
+      <h3 className="selectedMovieDetail" >Director: {movieDetails.Director}</h3>
+      <h4 className="selectedMovieDetail">Runtime: {movieDetails.Runtime}</h4>
+      <h5 className="selectedMovieDetail" >Metascore: {movieDetails.Metascore}</h5>
+      </div>
+      <h2 className="selectedMovieDetail" >Showtimes:</h2>
       {theaters.map((theater, index) => {
                 return (
-                    <div key = { index }>
+                  <div className="selectedMovieDetail" key = { index }>
                       <ShowtimesByMovie theater={theater} currentMovie={currentMovie}/>
                     </div>
                 )
