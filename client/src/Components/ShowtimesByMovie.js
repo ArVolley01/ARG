@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 
 const ShowtimesByMovie = ({theater, currentMovie}) => {
     const [showtimes, setShowtimes] = useState([])
+    const [ticketsAvailable, setTicketsAvailable] = useState(0)
 
     useEffect(() => {
         const getShowtimes = async () => {
@@ -10,10 +11,16 @@ const ShowtimesByMovie = ({theater, currentMovie}) => {
             if(res) {
                 console.log(res)
                 setShowtimes(res)
+                res.forEach((showtime) => {
+                    showtime.tickets.forEach((ticket) => {
+                        console.log(ticket)
+                        setTicketsAvailable(ticketsAvailable => ticketsAvailable+=1)
+                      })
+            })
             }
-          }
-          getShowtimes()
-    }, [])
+            }
+            getShowtimes()
+          }, [])
 
     return(
         <div>
@@ -23,7 +30,8 @@ const ShowtimesByMovie = ({theater, currentMovie}) => {
             if(showtime.tickets) {
                 return(
                 <div>
-                <p>{showtime.time}</p>
+                <h5>{showtime.time}</h5>
+                <h5>{ticketsAvailable}</h5>
                 </div>)
             }
         })}
