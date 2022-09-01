@@ -6,7 +6,7 @@ const TheaterSection = ({theater, setCurrentTheater, setCurrentMovie}) =>
 
     return(
         <div>
-        <h1>{theater.name}</h1>
+        <h1 className='theaterName'>{theater.name}</h1>
         {unique.map((movie, index) => {
             return(
             <div key = { index }>

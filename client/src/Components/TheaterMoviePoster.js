@@ -14,8 +14,8 @@ const MoviePoster = ({movie, setCurrentMovie} ) => {
   }, [])
     return (
         <div>
-        <img src={movieDetails.Poster} alt={movieDetails.Title} />
-        <h4>Genre: {movieDetails.Genre} | Runtime: {movieDetails.Runtime}</h4>
+        <img src={movieDetails.Poster} alt={movieDetails.Title} className="moviePoster" />
+        <h4 className='genreAndRuntime' >Genre: {movieDetails.Genre} | Runtime: {movieDetails.Runtime}</h4>
             {/* <h5>{movieDetails.Plot}</h5> */}
             {/* <h4>Metascore: {movieDetails.Metascore}</h4> */}
             </div>

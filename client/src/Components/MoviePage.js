@@ -5,7 +5,7 @@ import MoviePoster from './MoviePoster'
 const MoviePage = ({movies, setCurrentMovie}) => {
 
     return (
-        <div>
+        <div className="movieContainer">
             {movies.map((movie, index) => {
                 return (
                     <div key = { index }>

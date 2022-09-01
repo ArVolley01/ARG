@@ -21,10 +21,10 @@ const MoviePoster = ({movie, setCurrentMovie} ) => {
     navigate(`/movie/${movie.id}`)
   }
     return (
-        <div>
-            <h2 onClick={handleClick}>{movieDetails.Title} ({movieDetails.Rated})</h2>
-        <img onClick={handleClick} src={movieDetails.Poster} alt={movieDetails.Title} />
-        <h4>Genre: {movieDetails.Genre} | Runtime: {movieDetails.Runtime}</h4>
+        <div className='movieCard' >
+            <h2 onClick={handleClick} className="movieTitle" >{movieDetails.Title} <br /> ({movieDetails.Rated})</h2>
+        <img onClick={handleClick} src={movieDetails.Poster} alt={movieDetails.Title} className="moviePoster" />
+        <h4 className='genreAndRuntime' >{movieDetails.Genre} | Runtime: {movieDetails.Runtime}</h4>
             {/* <h5>{movieDetails.Plot}</h5> */}
             {/* <h4>Metascore: {movieDetails.Metascore}</h4> */}
             </div>
