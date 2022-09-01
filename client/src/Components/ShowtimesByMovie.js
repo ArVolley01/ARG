@@ -5,6 +5,7 @@ import Moment from 'moment';
 
 const ShowtimesByMovie = ({theater, currentMovie}) => {
     const [showtimes, setShowtimes] = useState([])
+    const [ticketsAvailable, setTicketsAvailable] = useState(0)
 
     useEffect(() => {
         const getShowtimes = async () => {
@@ -13,10 +14,16 @@ const ShowtimesByMovie = ({theater, currentMovie}) => {
             if(res) {
                 console.log(res)
                 setShowtimes(res)
+                res.forEach((showtime) => {
+                    showtime.tickets.forEach((ticket) => {
+                        console.log(ticket)
+                        setTicketsAvailable(ticketsAvailable => ticketsAvailable+=1)
+                      })
+            })
             }
-          }
-          getShowtimes()
-    }, [])
+            }
+            getShowtimes()
+          }, [])
 
     return(
         <div>
@@ -26,7 +33,8 @@ const ShowtimesByMovie = ({theater, currentMovie}) => {
             if(showtime.tickets) {
                 return(
                 <div>
-                    <p>{Moment(showtime.time).format('MMMM DD,  LT')}</p>
+                <p>{Moment(showtime.time).format('MMMM DD,  LT')}</p>
+                <h5>{ticketsAvailable}</h5>
                 </div>)
             }
         })}
