@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 
 import Moment from 'moment';
-
+import TicketSection from './TicketSection.js'
 
 const ShowtimesByMovie = ({theater, currentMovie}) => {
     const [showtimes, setShowtimes] = useState([])
@@ -14,12 +14,6 @@ const ShowtimesByMovie = ({theater, currentMovie}) => {
             if(res) {
                 console.log(res)
                 setShowtimes(res)
-                res.forEach((showtime) => {
-                    showtime.tickets.forEach((ticket) => {
-                        console.log(ticket)
-                        setTicketsAvailable(ticketsAvailable => ticketsAvailable+=1)
-                      })
-            })
             }
             }
             getShowtimes()
@@ -30,14 +24,16 @@ const ShowtimesByMovie = ({theater, currentMovie}) => {
         <h2>{theater.name}</h2>
         <div>
         {showtimes.map((showtime, index) => {
-            if(showtime.tickets) {
-                return(
-                <div>
-                <p>{Moment(showtime.time).format('MMMM DD,  LT')}</p>
-                <h5>{ticketsAvailable}</h5>
-                </div>)
-            }
-        })}
+                if(showtime.tickets) {
+                    return(
+                    <div>
+                    <p>{Moment(showtime.time).format('MMMM DD,  LT')}</p>
+                    <h5><TicketSection theater={theater} currentMovie={currentMovie} tickets={showtime.tickets}/></h5>
+                    </div>)
+                }
+            })}
+
+        
         </div>
         </div>
     )
