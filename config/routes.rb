@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "/tickets", to: "tickets#index"
   patch "/tickets/:id/update", to: "tickets#update"
   get "/theaters/:id/showtimes", to: "theaters#showtimes"
+  get "/movies/:id/showtimes", to: "movies#showtimes"
   get "/theaters/:id/movies/:movie_id/showtimes", to: "theaters#showtimes_by_movie"
   get "/movies/:id/theaters/:theater_id/showtimes", to: "movies#showtimes_by_theater"
   get "/showtimes", to: "showtimes#index"
