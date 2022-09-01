@@ -20,9 +20,12 @@ const ShowtimesByMovie = ({theater, currentMovie}) => {
         <h2>{theater.name}</h2>
         <div>
         {showtimes.map((showtime, index) => {
-            return (
+            if(showtime.tickets) {
+                return(
+                <div>
                 <p>{showtime.time}</p>
-            )
+                </div>)
+            }
         })}
         </div>
         </div>
