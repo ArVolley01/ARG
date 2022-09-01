@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react"
 
+import Moment from 'moment';
+
+
 const ShowtimesByMovie = ({theater, currentMovie}) => {
     const [showtimes, setShowtimes] = useState([])
 
@@ -23,7 +26,7 @@ const ShowtimesByMovie = ({theater, currentMovie}) => {
             if(showtime.tickets) {
                 return(
                 <div>
-                <p>{showtime.time}</p>
+                    <p>{Moment(showtime.time).format('MMMM DD,  LT')}</p>
                 </div>)
             }
         })}
