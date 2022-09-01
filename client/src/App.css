@@ -41,10 +41,12 @@
   border-top: none;
   margin-top: none;
   position: fixed;
+  top: 0;
   /* padding-bottom: 50px; */
 }
 
 .navbarButton {
+  margin-top: none;
   margin: 1.5em;
   padding: 30px;
   size: 20px;
@@ -123,6 +125,29 @@ body {
 
 /* THEATER PAGE */
 
-.theaterName {
-color: rgb(241, 206, 161);
+.theaterContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .theaterName {
+    color: rgb(241, 206, 161);
+    text-shadow: 1px 1px 5px black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding-top: 55px;
+    font-size: 3.5em;
+}
+
+.theaterMovieCard {
+  /* border: solid green; */
+  margin: 5px;
+  padding: 20px;
+}
+
+.theaterAddress {
+  color: rgb(241, 206, 161);
+    text-shadow: 1px 1px 5px black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
